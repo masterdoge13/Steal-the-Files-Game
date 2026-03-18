@@ -1,9 +1,10 @@
 extends CharacterBody2D
 @export var SPEED = 50000
 @export var GRAVITY = 6000
-var vertical_speed =50
+var vertical_speed = 50
 var gravity_direction = Vector2(0,-1)
 var can_jump = true
+var falling = true
 var player_state = "movable"
 var detection_state = "unseen" 
 #unseen for not detected but detectable
@@ -16,11 +17,13 @@ func _process(delta: float) -> void:
 		var direction = Input.get_vector("left", "right", "null", "null")
 		velocity = direction*SPEED*delta
 		move_and_slide()
-		vertical_speed -= GRAVITY
+		if falling:
+			vertical_speed -= GRAVITY
 		if can_jump:
 			if Input.is_action_just_pressed("jump") or Input.is_action_just_pressed("jump alt"):
 				vertical_speed = 100000
 				can_jump = false
+				falling = true
 		if vertical_speed != 0:
 			velocity = gravity_direction*vertical_speed*delta
 		move_and_slide()
@@ -28,6 +31,14 @@ func _process(delta: float) -> void:
 func reset_jump():
 	can_jump = true
 	print("jump reset")
+
+func stop_falling():
+	falling = false
+	print("falling stop")
+	
+func start_falling():
+	falling = true
+	print("falling start")
 
 func partial_hide(hidden_pos: Vector2):
 	position = hidden_pos
