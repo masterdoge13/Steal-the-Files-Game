@@ -3,6 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://b1duoam8kj3cj" path="res://assets/player/player.tscn" id="1_i6i2n"]
 [ext_resource type="Texture2D" uid="uid://brdhw3rvs8bic" path="res://assets/placeholders/icon.svg" id="2_d8g5j"]
 [ext_resource type="PackedScene" uid="uid://q4rhek6d4775" path="res://assets/terrain/Floor_Hitbox.tscn" id="3_d8g5j"]
+[ext_resource type="PackedScene" uid="uid://rq4ukgivjibk" path="res://assets/terrain/Pillar.tscn" id="4_7lk7n"]
+[ext_resource type="PackedScene" uid="uid://xhdyi6oy3b84" path="res://assets/terrain/closet.tscn" id="5_1id16"]
 
 [node name="debug level" type="Node2D" unique_id=1560303482]
 
@@ -18,3 +20,9 @@ texture = ExtResource("2_d8g5j")
 [node name="Floor Hitbox" parent="StaticBody2D" unique_id=722316531 instance=ExtResource("3_d8g5j")]
 position = Vector2(-3, 207)
 scale = Vector2(63.035, 1)
+
+[node name="Pillar" parent="." unique_id=67093844 instance=ExtResource("4_7lk7n")]
+position = Vector2(217, 134)
+
+[node name="Closet" parent="." unique_id=1242021266 instance=ExtResource("5_1id16")]
+position = Vector2(486, 137)

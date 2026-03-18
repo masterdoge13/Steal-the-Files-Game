@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://xhdyi6oy3b84"]
+
+[ext_resource type="PackedScene" uid="uid://ci305rtdl548j" path="res://assets/terrain/Full_Hiding_Hitbox.tscn" id="1_r2opm"]
+[ext_resource type="Texture2D" uid="uid://ji7k5mhs0sln" path="res://assets/placeholders/closetplaceholder.png" id="2_t8g51"]
+
+[node name="Closet" type="Node2D" unique_id=1242021266]
+
+[node name="Full_Hiding_Hitbox" parent="." unique_id=1615420442 instance=ExtResource("1_r2opm")]
+scale = Vector2(5.91, 5.595)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=110989818]
+z_index = -1
+texture = ExtResource("2_t8g51")
