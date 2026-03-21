@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://c7xyjq2twel31"]
+
+[ext_resource type="Script" uid="uid://dubmr3ky3rufq" path="res://assets/enemies/enemy_movement.gd" id="1_my2ai"]
+[ext_resource type="Texture2D" uid="uid://cacypdoyu0qyd" path="res://assets/placeholders/enemyplaceholder.png" id="2_21ob3"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_21ob3"]
+radius = 57.0
+height = 114.0
+
+[node name="Enemy Movement" type="CharacterBody2D" unique_id=1767099832]
+collision_layer = 32768
+collision_mask = 32768
+script = ExtResource("1_my2ai")
+
+[node name="Interest" type="Timer" parent="." unique_id=263814877]
+one_shot = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1069835388]
+shape = SubResource("CapsuleShape2D_21ob3")
+
+[node name="Detection" type="Area2D" parent="." unique_id=455530942]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Detection" unique_id=1351003688]
+polygon = PackedVector2Array(-127, -110, -1, -188, 68, -44, 833, -45, 831, 37, 1, 51)
+
+[node name="Attack_Range" type="Area2D" parent="." unique_id=1869463939]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Attack_Range" unique_id=1884843184]
+polygon = PackedVector2Array(-74, -58, -4, -81, 47, -28, 258, -28, 257, 29, 9, 29)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=567744485]
+z_index = -1
+texture = ExtResource("2_21ob3")
+
+[connection signal="timeout" from="Interest" to="." method="_on_interest_timeout"]
+[connection signal="body_entered" from="Detection" to="." method="_on_detection_body_entered"]
+[connection signal="body_exited" from="Detection" to="." method="_on_detection_body_exited"]
+[connection signal="body_entered" from="Attack_Range" to="." method="_on_attack_range_body_entered"]
+[connection signal="body_exited" from="Attack_Range" to="." method="_on_attack_range_body_exited"]

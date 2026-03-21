@@ -5,10 +5,13 @@
 [ext_resource type="PackedScene" uid="uid://q4rhek6d4775" path="res://assets/terrain/Floor_Hitbox.tscn" id="3_d8g5j"]
 [ext_resource type="PackedScene" uid="uid://rq4ukgivjibk" path="res://assets/terrain/Pillar.tscn" id="4_7lk7n"]
 [ext_resource type="PackedScene" uid="uid://xhdyi6oy3b84" path="res://assets/terrain/closet.tscn" id="5_1id16"]
+[ext_resource type="PackedScene" uid="uid://c7xyjq2twel31" path="res://assets/enemies/enemy_movement.tscn" id="6_m2dfw"]
 
 [node name="debug level" type="Node2D" unique_id=1560303482]
 
 [node name="Player" parent="." unique_id=1407116722 instance=ExtResource("1_i6i2n")]
+z_index = -1
+position = Vector2(60, -726)
 
 [node name="StaticBody2D" type="Node2D" parent="." unique_id=1423163169]
 
@@ -26,3 +29,6 @@ position = Vector2(218, 136)
 
 [node name="Closet" parent="." unique_id=1242021266 instance=ExtResource("5_1id16")]
 position = Vector2(486, 137)
+
+[node name="Enemy Movement" parent="." unique_id=1767099832 instance=ExtResource("6_m2dfw")]
+position = Vector2(-369, -563)

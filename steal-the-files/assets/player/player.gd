@@ -11,6 +11,8 @@ var detection_state = "unseen"
 #hidden for not able to be detected
 #detected for when guards are alerted
 #close proximity for when guards are alerted at a very close proximity
+var detected_count = 0
+var close_proximity_count = 0
 
 func _process(delta: float) -> void:
 	if player_state == "movable":
@@ -27,6 +29,7 @@ func _process(delta: float) -> void:
 		if vertical_speed != 0:
 			velocity = gravity_direction*vertical_speed*delta
 		move_and_slide()
+	print(detection_state)
 	
 func reset_jump():
 	can_jump = true
@@ -52,26 +55,57 @@ func partial_hide(hidden_pos: Vector2):
 func full_hide(hidden_pos: Vector2):
 	position = hidden_pos
 	player_state = "unmovable"
+	print(detection_state)
 	if detection_state != "close proximity":
+		print("not close")
 		detection_state = "hidden"
 	print(player_state)
 	print(detection_state)
+	set_collision_layer_value(2, false)
+	set_collision_mask_value(2, false)
 		
 func detected():
 	if detection_state != "hidden":
-		detection_state = "detected"
+		detected_count += 1
+		if (detected_count >= 1) and (close_proximity_count <= 0):
+			detection_state = "detected"
+
 		
 func close_proximity():
 	if detection_state != "hidden":
-		detection_state = "close proximity"
+		close_proximity_count += 1
+		if detected_count >= 1:
+			detection_state = "close proximity"
 		
 func unseen():
-	detection_state = "unseen"
+	if detection_state == "hidden":
+		detection_state = "unseen"
 	print(player_state)
 	print(detection_state)
+
+func unseen_from_proximity():
+	close_proximity_count -= 1
+	if close_proximity_count <= 0:
+		if (detected_count <= 0):
+			detection_state = "unseen"
+		else:
+			detection_state = "detected"
 	
+func unseen_from_detected():
+	detected_count -= 1
+	if detected_count <= 0:
+		if (close_proximity_count <= 0):
+			detection_state = "unseen"
+		else:
+			detection_state = "close proximity"
+		
+		
+	
+
 func exit():
 	player_state = "movable"
 	print(player_state)
 	print(detection_state)
+	set_collision_layer_value(2, true)
+	set_collision_mask_value(2, true)
 	
