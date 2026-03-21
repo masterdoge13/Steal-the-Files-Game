@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://r1hpuf2ghy5k"]
+
+[ext_resource type="Script" uid="uid://4f6for01f6dj" path="res://assets/userinterface/shop_ui.gd" id="1_ho8gm"]
+
+[node name="ShopUi" type="Control" unique_id=446118994]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ho8gm")
+
+[node name="ShopPage" type="PanelContainer" parent="." unique_id=989088532]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -194.5
+offset_top = -63.5
+offset_right = 194.5
+offset_bottom = 63.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="ShopPage" unique_id=1447498402]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ShopPage/MarginContainer" unique_id=2119926029]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ShopPage/MarginContainer/VBoxContainer" unique_id=354635306]
+layout_mode = 2
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 25
+text = "SHOP MENU PLACEHOLDER 
+HELLYEAH"
+
+[node name="ShopItemGrid" type="GridContainer" parent="ShopPage/MarginContainer/VBoxContainer" unique_id=1749326669]
+unique_name_in_owner = true
+layout_mode = 2

@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://d28y0fwxyd433"]
+
+[ext_resource type="Texture2D" uid="uid://xs7oay4edhb0" path="res://assets/placeholders/storeplaceholder.png" id="1_r4o56"]
+[ext_resource type="Script" uid="uid://cl4qbdi6s7nqg" path="res://assets/terrain/store_hitbox.gd" id="2_84sn2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3lpbe"]
+size = Vector2(120, 110)
+
+[node name="Store" type="Node2D" unique_id=31000646]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1079935178]
+texture = ExtResource("1_r4o56")
+
+[node name="store_hitbox" type="Area2D" parent="." unique_id=1572806117]
+script = ExtResource("2_84sn2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="store_hitbox" unique_id=898182345]
+shape = SubResource("RectangleShape2D_3lpbe")
+
+[connection signal="body_entered" from="store_hitbox" to="store_hitbox" method="_on_body_entered"]
+[connection signal="body_exited" from="store_hitbox" to="store_hitbox" method="_on_body_exited"]

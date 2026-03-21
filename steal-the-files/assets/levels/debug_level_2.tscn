@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://dds3wofg0ak6j"]
+
+[ext_resource type="PackedScene" uid="uid://b1duoam8kj3cj" path="res://assets/player/player.tscn" id="1_cff6x"]
+[ext_resource type="Texture2D" uid="uid://brdhw3rvs8bic" path="res://assets/placeholders/icon.svg" id="2_vlehq"]
+[ext_resource type="PackedScene" uid="uid://q4rhek6d4775" path="res://assets/terrain/Floor_Hitbox.tscn" id="3_qhagx"]
+[ext_resource type="PackedScene" uid="uid://d28y0fwxyd433" path="res://assets/terrain/Store.tscn" id="4_vlehq"]
+[ext_resource type="PackedScene" uid="uid://r1hpuf2ghy5k" path="res://assets/userinterface/ShopUI.tscn" id="5_qhagx"]
+
+[node name="DebugLevel2" type="Node2D" unique_id=19630926]
+
+[node name="Player" parent="." unique_id=1407116722 instance=ExtResource("1_cff6x")]
+
+[node name="StaticBody2D" type="Node2D" parent="." unique_id=1533561801]
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=550906800]
+position = Vector2(4, 207)
+scale = Vector2(9.7421875, 0.20703125)
+texture = ExtResource("2_vlehq")
+
+[node name="Floor Hitbox" parent="StaticBody2D" unique_id=722316531 instance=ExtResource("3_qhagx")]
+position = Vector2(-3, 207)
+scale = Vector2(63.035, 1)
+
+[node name="Store" parent="." unique_id=31000646 instance=ExtResource("4_vlehq")]
+position = Vector2(-470, 139)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1144643266]
+
+[node name="MainUI" type="Control" parent="CanvasLayer" unique_id=189423171]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+
+[node name="ShopUi" parent="CanvasLayer/MainUI" unique_id=446118994 instance=ExtResource("5_qhagx")]
+unique_name_in_owner = true
+layout_mode = 1
